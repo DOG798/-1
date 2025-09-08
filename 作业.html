@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>学生注册表单</title>
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<style>
+			h1{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>学生用户注册</h1>
+		<form onsubmit="return formcheck()">
+			<label for="username">姓名</label>
+			<input class="form-control" id="username" name="username" placeholder="请输入您的姓名"/>
+			<br>
+			<label for="phone">手机号</label>
+			<input class="form-control" id="phone" name="phone" placeholder="请输入11位手机号"/>
+			<br>
+			<label for="email">邮箱</label>
+			<input class="form-control" id="email" name="email" placeholder="可选,如:student@school.com"/>
+			<br>
+			<label for="password">密码</label>
+			<input class="form-control" id="password" name="mima" placeholder="至少6位,包含字母和数字"/>
+			<br>
+			<label for="dd">确认密码</label>
+			<input class="form-control" id="dd" name="dd" placeholder="请再次输入密码"/>
+			<br>
+	        <button class="form-control" style="background-color: #007bff;">注册</button>
+		</form>
+		</div>
+		</body>
+	<script>
+		function formcheck() {
+			let isValid = true;
+			let username = document.getElementById("username");
+			let reg = /^[A-Za-z0-9]{3,8}$/;
+			if(!reg.test(username.value)){
+				alert("用户名格式错误，为3-8位字母或数字");
+				isValid = false;
+			}
+		
+			let phone = document.getElementById("phone");
+			let reg1 = /^[0-9]{11}$/;
+			if (!reg1.test(phone.value)) {
+				alert("手机号格式错误，必须为11位数字");
+				isValid = false;
+			}
+			
+			let email = document.getElementById("email");
+			let reg2 = /^[A-Za-z0-9_]+@[A-Za-z0-9]+\.(com|cn|gov\.cn|org)$/;
+			if (!reg2.test(email.value)) {
+				alert("邮箱格式错误");
+				isValid = false;
+			}
+		
+			let password = document.getElementById("password");
+			let reg3 = /^[\w]{6,99}$/;
+			if (!reg3.test(password.value)) {
+				alert("密码格式错误,为6位以上的数字或字母");
+				isValid = false;
+			}
+	
+			let dd = document.getElementById("dd")
+			if (dd.value == password.value) {
+				}else{
+				alert("密码与原密码不一致");
+				isValid = false;
+			}
+			return isValid;
+		}
+	</script>
+</html>
